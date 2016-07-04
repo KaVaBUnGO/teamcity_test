@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Conferences List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"
+          href="../../css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/css/common.css}"
+          href="../../css/common.css" />
+</head>
+<body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+<div class="container">
+    <h1>CONFERENCE SCHEDULE</h1>
+    <div class="row">
+        <div class="col-sm-6 col-md-3" th:each="room : ${rooms}">
+            <div class="thumbnail">
+                <img th:src="@{/images/konular.jpg}" src="" alt="..."/>
+
+                <div class="caption">
+                    <h1 th:text="${room.name}" style="text-decoration: underline;">Room name...</h1>
+
+                    <div th:each="presentation : ${room.presentations}">
+                        <h3 th:text="${presentation.name}">presentation name...</h3>
+
+                    <p>Presenters: &nbsp;</p>
+
+                    <ul th:each="user : ${presentation.users}">
+                        <li th:text="${user.name}">user name</li>
+                    </ul>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
